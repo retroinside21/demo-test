@@ -1,0 +1,7 @@
+.main__title {
+    overflow: hidden;
+}
+
+.main__title span {
+    font-size: 12px;
+}
