@@ -13,11 +13,11 @@ export const NavPage = () => {
         <div>
             <nav className="teal darken-3">
                 <div className="nav-wrapper container">
-                    <a href="/" className="brand-logo">APPTRIX-TZ</a>
+                    <a href="/" className="brand-logo">Demo</a>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
-                        <li><NavLink to="/mainpage">Главная</NavLink></li>
-                        
-                        <li><a href="/" onCick={logoutHandler}>Выход</a></li>
+                        <li><NavLink to="/mainpage">Список таблицы</NavLink></li>
+                        <li><NavLink to="/datausers">О пользователе</NavLink></li>
+                        <li><a href="/" onClick={logoutHandler}>Выход</a></li>
                     </ul>
                 </div>
             </nav>

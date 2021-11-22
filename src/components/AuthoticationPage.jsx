@@ -24,14 +24,6 @@ export const AuthoticationPage = () => {
           auth.login(data.access, data.refresh)
         } catch (e) {}
       }
-
-      const logoutHandler = async () => {
-        try {
-          const data = await request('http://erp.apptrix.ru/api/token/', 'POST', {...form})
-          auth.logout(data.access, data.refresh)
-        } catch (e) {}
-      }
-        
     
     return (
         <div className="row">
@@ -70,10 +62,6 @@ export const AuthoticationPage = () => {
                                 className="btn grey darken-1"
                                 onClick={loginHandler}
                                 >Войти</button>
-                                <button 
-                                className="btn grey darken-1"
-                                onClick={logoutHandler}
-                                >Выход</button>
                             </div>
                         </div>
                     </div>
