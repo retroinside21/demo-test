@@ -34,7 +34,7 @@ export const DataUsers = () => {
         return (<Loading/>)
     }
 
-    console.log(users)
+   
 
     return (
         <div>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import "./MainPage.css"
 // import { items } from "./collection"
 import { useYouTrackApi } from "../../hooks/hookApi"
+import { Loading } from "../Loading/Loading"
 
 
 
@@ -10,6 +11,8 @@ let count = 10
 export const MainPage = () => {
     const [table, setTable] = useState([])
     const [title, setTitle] = useState('')
+    const [term, setTerm] = useState('')
+    const [loading, setLoading] = useState(true)
 
     const { reques } = useYouTrackApi()
     const loadTable = async () => {
@@ -20,6 +23,7 @@ export const MainPage = () => {
             'Authorization':'Bearer perm:amFuZS5kb2U=.UkVTVCBBUEk=.wcKuAok8cHmAtzjA6xlc4BrB4hleaX',
             'Cache-Control': 'no-cache' } )
             const items = data.slice(0, 3)
+            setLoading(false)
             setTable([...items])
         }
         catch (e) {
@@ -28,7 +32,7 @@ export const MainPage = () => {
     }
 
     const addItem = (e) => {
-     
+    
         setTable([...table,
             {
                 project: {
@@ -53,7 +57,14 @@ export const MainPage = () => {
         loadTable()
     }, [])
 
-    const items = table.map(item => {
+    const items = table.filter((el)=>{
+        if(term ===''){
+            return table
+        } else if(el.summary.toLowerCase().includes(term.toLowerCase())){
+            return el
+        }
+    })
+    .map(item => {
         const { id, summary } = item
         return (
             <tr key={id}>
@@ -68,22 +79,36 @@ export const MainPage = () => {
         )
     })
 
+
+    if(loading || items === undefined){
+        return (<Loading/>)
+    }
+
+
  return (
         <div>
             <h1 className="main__title">Cписок таблицы</h1>
             <div>
                 <div>
-                    <input
+                <input
                         onChange={event => setTitle(event.target.value)}
                         value={title}
             
                         placeholder="Добавьте элемент"
                         type="text"
                         className="validate" />
-                    <button
+                          <button
                         className="waves-effect waves-light btn"
                         onClick={addItem}
                     >Добавить</button>
+                <input
+                        onChange={event => setTerm(event.target.value)}
+                        value={term}
+                        placeholder="Поиск элемента"
+                        type="text"
+                        className="validate" />
+                   
+                  
                 </div>
              
             </div>
