@@ -2,9 +2,9 @@ import React from "react"
 import { Redirect, Route } from "react-router"
 import { Switch } from "react-router-dom/cjs/react-router-dom.min"
 import { AuthoticationPage } from "./components/AuthoticationPage"
-import { DataUsers } from "./components/DataUsers/DataUsers"
 import { MainPage } from "./components/MainPage/MainPage"
 import { NavPage } from "./components/NavPage"
+import { BreakingCharacters } from "./components/BreakingCharacters/BreakingCharacters"
 
 export const useRoutes = isAuth => {
     if(isAuth){
@@ -16,10 +16,9 @@ export const useRoutes = isAuth => {
           <Route path="/mainpage" exact>
               <NavPage path="/navpage" exact />
           </Route>
-          <Route path="/datausers">
-                <DataUsers path="/datausers"/>
+          <Route path="/breakingbad">
+                <BreakingCharacters path="/breakingbad"/>
           </Route>
-          
           <Redirect to="/mainpage"/>
         </Switch>
         )

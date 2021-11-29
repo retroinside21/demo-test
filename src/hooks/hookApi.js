@@ -6,7 +6,6 @@ import { useState, useCallback} from "react"
 export const useYouTrackApi= () => {
   const [loading, setLoading] = useState(false)
   const reques = useCallback(async (url, method = 'POST', body = null, headers = {
-
   }) => {
     setLoading(true)
     try {

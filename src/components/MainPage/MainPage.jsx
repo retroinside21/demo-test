@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import "./MainPage.css"
-// import { items } from "./collection"
 import { useYouTrackApi } from "../../hooks/hookApi"
 import { Loading } from "../Loading/Loading"
 
@@ -18,10 +17,8 @@ export const MainPage = () => {
     const loadTable = async () => {
         try {
             const data = await reques('https://example.youtrack.cloud/api/issues?fields=id,summary,project(name)', 'GET', JSON.stringify(), {
-            'Content-type' : 'application/json',
-            'Accept' : 'application/json',
             'Authorization':'Bearer perm:amFuZS5kb2U=.UkVTVCBBUEk=.wcKuAok8cHmAtzjA6xlc4BrB4hleaX',
-            'Cache-Control': 'no-cache' } )
+             } )
             const items = data.slice(0, 3)
             setLoading(false)
             setTable([...items])
@@ -30,9 +27,19 @@ export const MainPage = () => {
             console.log(`${e.message} что то пошло не так`)
         }
     }
+    // const load = async () => {
+    //     try {
+    //         const data = await reques('https://the-one-api.dev/v2/character?page=1&&limit=10', 'GET', JSON.stringify(), {
+    //         'Authorization':'Bearer PzLcnHbQpSvDnOeu9Ry7',
+    //          } )
+    //          console.log(data)
+    //     }
+    //     catch (e) {
+    //         console.log(`${e.message} что то пошло не так`)
+    //     }
+    // }
 
-    const addItem = (e) => {
-    
+    const addItem = () => {
         setTable([...table,
             {
                 project: {
@@ -43,7 +50,6 @@ export const MainPage = () => {
             }
             ])
             setTitle('')
-    
     }
 
 
@@ -55,6 +61,7 @@ export const MainPage = () => {
 
     useEffect(() => {
         loadTable()
+        // load()
     }, [])
 
     const items = table.filter((el)=>{
@@ -64,7 +71,7 @@ export const MainPage = () => {
             return el
         }
     })
-    .map(item => {
+    .map( (item) => {
         const { id, summary } = item
         return (
             <tr key={id}>
@@ -80,14 +87,13 @@ export const MainPage = () => {
     })
 
 
-    if(loading || items === undefined){
+    if (loading || items === undefined) {
         return (<Loading/>)
     }
 
-
  return (
         <div>
-            <h1 className="main__title">Cписок таблицы</h1>
+            <h1 className="main__title">Cписок полученный из API</h1>
             <div>
                 <div>
                 <input
@@ -107,17 +113,14 @@ export const MainPage = () => {
                         placeholder="Поиск элемента"
                         type="text"
                         className="validate" />
-                   
-                  
                 </div>
-             
             </div>
             <table className="striped">
                 <thead>
                     <tr>
                         <th>id</th>
-                        <th>Name</th>
-                        <th>Summary</th>
+                        <th>Имя проекта</th>
+                        <th>Список дел</th>
                     </tr>
                 </thead>
                 <tbody>
