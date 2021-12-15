@@ -4,7 +4,7 @@ import { Switch } from "react-router-dom/cjs/react-router-dom.min"
 import { AuthoticationPage } from "./components/AuthoticationPage"
 import { MainPage } from "./components/MainPage/MainPage"
 import { NavPage } from "./components/NavPage"
-import { BreakingCharacters } from "./components/BreakingCharacters/BreakingCharacters"
+import { RickandMorty } from "./components/BreakingCharacters/RickandMorty"
 
 export const useRoutes = isAuth => {
     if(isAuth){
@@ -16,10 +16,10 @@ export const useRoutes = isAuth => {
           <Route path="/mainpage" exact>
               <NavPage path="/navpage" exact />
           </Route>
-          <Route path="/breakingbad">
-                <BreakingCharacters path="/breakingbad"/>
+          <Route path="/rickandMorty">
+                <RickandMorty path="/rickandMorty"/>
           </Route>
-          <Redirect to="/mainpage"/>
+          <Redirect to="/rickandMorty"/>
         </Switch>
         )
     }

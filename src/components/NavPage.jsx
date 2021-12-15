@@ -11,12 +11,12 @@ export const NavPage = () => {
     }
     return (
         <div>
-            <nav className="teal darken-3">
-                <div className="nav-wrapper container">
+            <nav className="teal darken-3 ">
+                <div className="nav-wrapper container__all">
                     <a href="/" className="brand-logo">Demo</a>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         <li><NavLink to="/mainpage">Список таблицы</NavLink></li>
-                        <li><NavLink to="/breakingbad">BB персонажи</NavLink></li>
+                        <li><NavLink to="/rickandMorty">Rick and Morty REST API</NavLink></li>
                         <li><a href="/" onClick={logoutHandler}>Выход</a></li>
                     </ul>
                 </div>

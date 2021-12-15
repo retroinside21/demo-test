@@ -28,7 +28,7 @@ export const AuthoticationPage = () => {
     return (
         <div className="row">
             <div className="col s12 offset-s3">
-                <h1>Тестовое задание</h1>
+                <h1>Авторизуйтесь</h1>
                 <div className="row">
                     <div className="col s12 m6">
                         <div className="card blue-grey darken-4">
@@ -62,6 +62,10 @@ export const AuthoticationPage = () => {
                                 className="btn grey darken-1"
                                 onClick={loginHandler}
                                 >Войти</button>
+                               <div className="auth">
+                                   <div>Login : erp_user </div>
+                                   <div>Password : 12qwaszx12qwaszx </div>
+                               </div>
                             </div>
                         </div>
                     </div>

@@ -12,6 +12,7 @@ export const MainPage = () => {
     const [title, setTitle] = useState('')
     const [term, setTerm] = useState('')
     const [loading, setLoading] = useState(true)
+    
 
     const { reques } = useYouTrackApi()
     const loadTable = async () => {
@@ -27,17 +28,6 @@ export const MainPage = () => {
             console.log(`${e.message} что то пошло не так`)
         }
     }
-    // const load = async () => {
-    //     try {
-    //         const data = await reques('https://the-one-api.dev/v2/character?page=1&&limit=10', 'GET', JSON.stringify(), {
-    //         'Authorization':'Bearer PzLcnHbQpSvDnOeu9Ry7',
-    //          } )
-    //          console.log(data)
-    //     }
-    //     catch (e) {
-    //         console.log(`${e.message} что то пошло не так`)
-    //     }
-    // }
 
     const addItem = () => {
         setTable([...table,

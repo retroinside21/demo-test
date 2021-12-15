@@ -4,6 +4,7 @@ import { NavPage } from "./components/NavPage";
 import { AuthContext } from "./context/AuthContext";
 import { useAuth } from "./hooks/hookAuth";
 import { useRoutes } from "./routes";
+import './App.css'
 
 function App() {
 
@@ -16,7 +17,7 @@ function App() {
    <AuthContext.Provider value={{login,logout,access,isAuth,refresh}}>
    <BrowserRouter>
     {isAuth && <NavPage/>}
-     <div className="container">
+     <div className="container__all">
        {routes}
      </div>
    </BrowserRouter>
